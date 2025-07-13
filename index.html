@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malla Interactiva - Biotecnología UDLA</title>
+  <title>Malla - Biotecnología</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -55,7 +55,7 @@
   </style>
 </head>
 <body>
-  <h1>Malla Interactiva - Biotecnología UDLA</h1>
+  <h1>Malla - Biotecnología</h1>
   <div id="malla"></div>
 
   <script>
@@ -111,70 +111,27 @@
       "BIOTECNOLOGIA ENZIMATICA",
       "MICROBIOLOGIA 2",
       "OPERACIONES UNITARIAS BIOTECNOLOGICAS",
-      "DISEÑO DE EXPERIMENTOS"
-    ]
+      "DISEÑO DE EXPERIMENTOS"]
   },
   { nombre: "BIOINFORMATICA", prerequisitos: ["BIOLOGIA MOLECULAR I", "INTRODUCCION A LA BIOINFORMATICA"] },
   { nombre: "PROYECTO DE INVESTIGACION INTEGRADOR", prerequisitos: ["DISEÑO DE EXPERIMENTOS", "MICROBIOLOGIA 2"] },
   { nombre: "INGLES AVANZADO 1", prerequisitos: ["INGLES INTERMEDIO 2"] }
 ],
       "8vo Semestre": [
-  {
-    nombre: "BIOTECNOLOGIA BIOMEDICA",
-    prerequisitos: ["INMUNOLOGIA", "BIOINFORMATICA", "INGENIERIA GENETICA"]
-  },
-  {
-    nombre: "BIOTECNOLOGIA ANIMAL",
-    prerequisitos: ["BIOINFORMATICA", "INGENIERIA GENETICA"]
-  },
-  {
-    nombre: "MODELAMIENTO DE BIOPROCESOS",
-    prerequisitos: ["INTRODUCCION A LA BIOINFORMATICA", "BIOPROCESOS"]
-  },
-  {
-    nombre: "BIOTECNOLOGIA VEGETAL",
-    prerequisitos: ["INGENIERIA GENETICA"]
-  },
-  {
-    nombre: "GESTION DE PROYECTO DE BIOTECNOLOGIA",
-    prerequisitos: ["PROYECTO DE INVESTIGACION INTEGRADOR"]
-  },
-  {
-    nombre: "INGLES AVANZADO 2",
-    prerequisitos: ["INGLES AVANZADO 1"]
-  }
+  {nombre: "BIOTECNOLOGIA BIOMEDICA", prerequisitos: ["INMUNOLOGIA", "BIOINFORMATICA", "INGENIERIA GENETICA"]},
+  {nombre: "BIOTECNOLOGIA ANIMAL", prerequisitos: ["BIOINFORMATICA", "INGENIERIA GENETICA"] },
+  { nombre: "MODELAMIENTO DE BIOPROCESOS", prerequisitos: ["INTRODUCCION A LA BIOINFORMATICA", "BIOPROCESOS"]},
+  {nombre: "BIOTECNOLOGIA VEGETAL", prerequisitos: ["INGENIERIA GENETICA"]},
+  {nombre: "GESTION DE PROYECTO DE BIOTECNOLOGIA", prerequisitos: ["PROYECTO DE INVESTIGACION INTEGRADOR"]},
+  {nombre: "INGLES AVANZADO 2", prerequisitos: ["INGLES AVANZADO 1"] }
 ],
       "9no Semestre": [
-  {
-    nombre: "BIOTECNOLOGIA Y EMPRENDIMIENTO",
-    prerequisitos: ["PROYECTO DE INVESTIGACION INTEGRADOR"]
-  },
-  {
-    nombre: "CALIDAD Y BIOSEGURIDAD",
-    prerequisitos: ["MICROBIOLOGIA 2"]
-  },
-  {
-    nombre: "BIOTECNOLOGIA INDUSTRIAL",
-    prerequisitos: [
-      "MODELAMIENTO DE BIOPROCESOS",
-      "BIOTECNOLOGIA VEGETAL"
-    ]
-  },
-  {
-    nombre: "PRACTICAS PREPROFESIONALES",
-    prerequisitos: ["BIOLOGIA MOLECULAR 2"]
-  },
-  {
-    nombre: "PROYECTO DE BIOTECNOLOGIA",
-    prerequisitos: [
-      "BIOTECNOLOGIA VEGETAL",
-      "BIOTECNOLOGIA BIOMEDICA",
-      "BIOTECNOLOGIA ANIMAL",
-      "GESTION DE PROYECTO DE BIOTECNOLOGIA"
-    ]
-  }
+  {nombre: "BIOTECNOLOGIA Y EMPRENDIMIENTO", prerequisitos: ["PROYECTO DE INVESTIGACION INTEGRADOR"]},
+  {nombre: "CALIDAD Y BIOSEGURIDAD", prerequisitos: ["MICROBIOLOGIA 2"]},
+  {nombre: "BIOTECNOLOGIA INDUSTRIAL", prerequisitos: ["MODELAMIENTO DE BIOPROCESOS", "BIOTECNOLOGIA VEGETAL"]},
+  {nombre: "PRACTICAS PREPROFESIONALES", prerequisitos: ["BIOLOGIA MOLECULAR 2"]},
+  {nombre: "PROYECTO DE BIOTECNOLOGIA", prerequisitos: ["BIOTECNOLOGIA VEGETAL",  "BIOTECNOLOGIA BIOMEDICA",  "BIOTECNOLOGIA ANIMAL",  "GESTION DE PROYECTO DE BIOTECNOLOGIA" ]}
 ]
-   
     };
 
     const completadas = new Set();
