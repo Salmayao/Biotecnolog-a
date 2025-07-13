@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Interactiva - Biotecnología UDLA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 20px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    h1 {
+      text-align: center;
+      color: #b30059;
+    }
+    .semestre {
+      display: inline-block;
+      vertical-align: top;
+      background: #ffe6f0;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px;
+      width: 220px;
+    }
+    .semestre h2 {
+      text-align: center;
+      color: #cc0066;
+    }
+    .materia {
+      background: #ffb3cc;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 2px solid transparent;
+    }
+    .materia.locked {
+      background: #e0e0e0;
+      color: #888;
+      cursor: not-allowed;
+    }
+    .materia.done {
+      background: #c5a3ff;
+      color: #000;
+      text-decoration: line-through;
+      font-style: italic;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Interactiva - Biotecnología UDLA</h1>
+  <div id="malla"></div>
+
+  <script>
+    const malla = {
+      "1er Semestre": [
+        { nombre: "INTRODUCCIÓN A LA BIOTECNOLOGÍA" },
+        { nombre: "QUÍMICA GENERAL" },
+        { nombre: "INTRODUCCIÓN A CÁLCULO" },
+        { nombre: "APRENDIZAJE ESTRATÉGICO Y LIDERAZGO" },
+        { nombre: "COMUNICACIÓN EFECTIVA" }
+      ],
+      "2do Semestre": [
+        { nombre: "BIOLOGÍA CELULAR", prerequisitos: ["INTRODUCCIÓN A LA BIOTECNOLOGÍA"] },
+        { nombre: "QUÍMICA APLICADA", prerequisitos: ["QUÍMICA GENERAL"] },
+        { nombre: "CÁLCULO 1", prerequisitos: ["INTRODUCCIÓN A CÁLCULO"] },
+        { nombre: "FÍSICA GENERAL", prerequisitos: ["INTRODUCCIÓN A CÁLCULO"] }
+      ],
+      "3er Semestre": [
+        { nombre: "FISIOLOGÍA CELULAR", prerequisitos: ["BIOLOGÍA CELULAR"] },
+        { nombre: "QUÍMICA ORGÁNICA", prerequisitos: ["QUÍMICA GENERAL"] },
+        { nombre: "QUÍMICA-FÍSICA", prerequisitos: ["FÍSICA GENERAL", "QUÍMICA APLICADA"] },
+        { nombre: "METODOLOGÍA DE LA INVESTIGACIÓN" }
+      ],
+      "4to Semestre": [
+        { nombre: "GENETICA", prerequisitos: ["FISIOLOGIA CELULAR"] },
+        { nombre: "INTRODUCCION A LA BIOINFORMATICA", prerequisitos: ["BIOLOGIA CELULAR"] },
+        { nombre: "BIOQUIMICA", prerequisitos: ["QUIMICA ORGANICA","BIOLOGIA CELULAR"] },
+        { nombre: "FENOMENOS DE TRANSPORTE APLICADOS A LA BIOTECNOLOGIA", prerequisitos: ["QUIMCA-FISICA","ECUACIONES DIFERENCIALES"] },
+        { nombre: "BIOESTADISTICA", prerequisitos: ["METODOLOGIA DE LA INVESTIGACION"] },
+        { nombre: "METODOLOGIA DE LA INVESTIGACION", prerequisitos: ["PENSAMIENTO CRITICO APLICADO"] },
+        { nombre: "INGLES ELEMENTAL 2" , prerequisitos: ["INGLES ELEMENTAL"] }
+       ],
+     "5to Semestre": [
+        { nombre: "BIOLOGIA MOLECULAR I", prerequisitos: ["GENETICA", "BIOQUIMICA", "INTRODUCCION A LA BIOINFORMATICA"] },
+        { nombre: "BALANCE DE MATERIALES Y ENERGIA", prerequisitos: ["QUIMICA-FISICA", "ECUACIONES DIFERENCIALES"] },
+        { nombre: "MICROBIOLOGIA 1", prerequisitos: ["FISIOLOGIA CELULAR"] },
+        { nombre: "PRINCIPIOS DE INGENIERIA METABOLICA", prerequisitos: ["QUIMICA ANALITICA", "BIOQUIMICA"] },
+        { nombre: "DISEÑO DE EXPERIMENTOS", prerequisitos: ["BIOESTADISTICA"] },
+        { nombre: "INGLES INTERMEDIO 1", prerequisitos: ["INGLES ELEMENTAL 2"] }
+       ],
+     "6to Semestre": [
+        { nombre: "INMUNOLOGIA", prerequisitos: ["BIOLOGIA MOLECULAR I"] },
+        { nombre: "BIOLOGIA MOLECULAR II", prerequisitos: ["BIOLOGIA MOLECULAR I"] },
+        { nombre: "OPERACIONES UNITARIAS BIOTECNOLOGICAS", prerequisitos: ["FENOMENOS DE TRANSPORTE APLICADOS A LA BIOTECNOLOGIA", "BALANCE DE MATERIALES Y ENERGIA"] },
+        { nombre: "MICROBIOLOGIA 2", prerequisitos: ["MICROBIOLOGIA 1"] },
+        { nombre: "BIOTECNOLOGIA ENZIMATICA", prerequisitos: ["PRINCIPIOS DE INGENIERIA METABOLICA", "MICROBIOLOGIA 1"] },
+        { nombre: "INGLES INTERMEDIO 2", prerequisitos: ["INGLES INTERMEDIO 1"] }
+],
+      "7mo Semestre": [
+  { nombre: "INGENIERIA GENETICA", prerequisitos: ["BIOLOGIA MOLECULAR II"] },
+  { nombre: "BIOTECNOLOGIA AMBIENTAL", prerequisitos: ["MICROBIOLOGIA 2"] },
+  { nombre: "BIOPROCESOS", prerequisitos: [
+      "BIOTECNOLOGIA ENZIMATICA",
+      "MICROBIOLOGIA 2",
+      "OPERACIONES UNITARIAS BIOTECNOLOGICAS",
+      "DISEÑO DE EXPERIMENTOS"
+    ]
+  },
+  { nombre: "BIOINFORMATICA", prerequisitos: ["BIOLOGIA MOLECULAR I", "INTRODUCCION A LA BIOINFORMATICA"] },
+  { nombre: "PROYECTO DE INVESTIGACION INTEGRADOR", prerequisitos: ["DISEÑO DE EXPERIMENTOS", "MICROBIOLOGIA 2"] },
+  { nombre: "INGLES AVANZADO 1", prerequisitos: ["INGLES INTERMEDIO 2"] }
+],
+      "8vo Semestre": [
+  {
+    nombre: "BIOTECNOLOGIA BIOMEDICA",
+    prerequisitos: ["INMUNOLOGIA", "BIOINFORMATICA", "INGENIERIA GENETICA"]
+  },
+  {
+    nombre: "BIOTECNOLOGIA ANIMAL",
+    prerequisitos: ["BIOINFORMATICA", "INGENIERIA GENETICA"]
+  },
+  {
+    nombre: "MODELAMIENTO DE BIOPROCESOS",
+    prerequisitos: ["INTRODUCCION A LA BIOINFORMATICA", "BIOPROCESOS"]
+  },
+  {
+    nombre: "BIOTECNOLOGIA VEGETAL",
+    prerequisitos: ["INGENIERIA GENETICA"]
+  },
+  {
+    nombre: "GESTION DE PROYECTO DE BIOTECNOLOGIA",
+    prerequisitos: ["PROYECTO DE INVESTIGACION INTEGRADOR"]
+  },
+  {
+    nombre: "INGLES AVANZADO 2",
+    prerequisitos: ["INGLES AVANZADO 1"]
+  }
+],
+      "9no Semestre": [
+  {
+    nombre: "BIOTECNOLOGIA Y EMPRENDIMIENTO",
+    prerequisitos: ["PROYECTO DE INVESTIGACION INTEGRADOR"]
+  },
+  {
+    nombre: "CALIDAD Y BIOSEGURIDAD",
+    prerequisitos: ["MICROBIOLOGIA 2"]
+  },
+  {
+    nombre: "BIOTECNOLOGIA INDUSTRIAL",
+    prerequisitos: [
+      "MODELAMIENTO DE BIOPROCESOS",
+      "BIOTECNOLOGIA VEGETAL"
+    ]
+  },
+  {
+    nombre: "PRACTICAS PREPROFESIONALES",
+    prerequisitos: ["BIOLOGIA MOLECULAR 2"]
+  },
+  {
+    nombre: "PROYECTO DE BIOTECNOLOGIA",
+    prerequisitos: [
+      "BIOTECNOLOGIA VEGETAL",
+      "BIOTECNOLOGIA BIOMEDICA",
+      "BIOTECNOLOGIA ANIMAL",
+      "GESTION DE PROYECTO DE BIOTECNOLOGIA"
+    ]
+  }
+]
+   
+    };
+
+    const completadas = new Set();
+
+    function renderMalla() {
+      const container = document.getElementById("malla");
+      container.innerHTML = "";
+      for (const [semestre, materias] of Object.entries(malla)) {
+        const col = document.createElement("div");
+        col.className = "semestre";
+        const title = document.createElement("h2");
+        title.textContent = semestre;
+        col.appendChild(title);
+
+        for (const mat of materias) {
+          const div = document.createElement("div");
+          div.className = "materia";
+          div.textContent = mat.nombre;
+
+          const prereq = mat.prerequisitos || [];
+          const unlocked = prereq.every(p => completadas.has(p));
+
+          if (!unlocked) {
+            div.classList.add("locked");
+          } else {
+            div.addEventListener("click", () => {
+              div.classList.toggle("done");
+              if (div.classList.contains("done")) {
+                completadas.add(mat.nombre);
+              } else {
+                completadas.delete(mat.nombre);
+              }
+              renderMalla();
+            });
+          }
+
+          if (completadas.has(mat.nombre)) {
+            div.classList.add("done");
+          }
+
+          col.appendChild(div);
+        }
+        container.appendChild(col);
+      }
+    }
+
+    renderMalla();
+  </script>
+</body>
+</html>
